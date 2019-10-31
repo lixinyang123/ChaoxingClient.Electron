@@ -1,0 +1,15 @@
+{
+  "name": "chaoxing_chromium",
+  "version": "1.0.0",
+  "description": "",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron ."
+  },
+  "author": "LLLXY",
+  "license": "ISC",
+  "description":"超星尔雅客户端",
+  "dependencies": {
+    "request": "^2.88.0"
+  }
+}
