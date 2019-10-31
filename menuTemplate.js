@@ -3,13 +3,47 @@ module.exports.getmenuTemplate = (webContents,shell)=>{
         
     var menuTemplate = [
         {
-            label: "主页",
-            click: ()=>{
-                webContents.loadURL('http://passport2.chaoxing.com/login');
-            }
+            label: "浏览",
+            submenu: [
+                {
+                    label: "主页",
+                    click: ()=>{
+                        webContents.loadURL('http://passport2.chaoxing.com/login');
+                    }
+                },
+                {
+                    label: "刷新",
+                    click: ()=>{
+                        webContents.reload();
+                    }
+                },
+                {
+                    label: "前进",
+                    click: ()=>{
+                        if(webContents.canGoForward()){
+                            webContents.goForward();
+                        }
+                    }
+                },
+                {
+                    label: "后退",
+                    click: ()=>{
+                        if(webContents.canGoBack()){
+                            webContents.goBack();
+                        }
+                    }
+                },
+                {
+                    label: "浏览器中打开",
+                    click: ()=>{
+                        var url = webContents.getURL();
+                        shell.openExternal(url);
+                    }
+                }
+            ]
         },
         {
-            label: "开始",
+            label: "刷课",
             submenu: [
                 {
         
@@ -30,13 +64,6 @@ module.exports.getmenuTemplate = (webContents,shell)=>{
                     label: "停止刷课",
                     click: ()=>{
                         webContents.reload();
-                    }
-                },
-                {
-                    label: "浏览器中打开",
-                    click: ()=>{
-                        var url = webContents.getURL();
-                        shell.openExternal(url);
                     }
                 }
             ]
