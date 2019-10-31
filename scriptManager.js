@@ -1,4 +1,5 @@
 const request = require("request");
+const fs = require("fs");
 
 var url = "https://www.lllxy.net/cxsk/getscript.ashx";
 
@@ -9,8 +10,17 @@ function init(callback){
 }
 
 function getScript(callback){
-    init((script)=>{
-        callback(script);
+    fs.readFile("./script.js",(err,data)=>{
+        if(!err){
+            console.log("CustomScript");
+            callback(data.toString());
+        }
+        else{
+            console.log("OnlineScript");
+            init((script)=>{
+                callback(script);
+            });
+        }
     });
 }
 

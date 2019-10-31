@@ -1,5 +1,4 @@
 const { app, BrowserWindow, Menu, shell } = require('electron');
-const fs = require("fs");
 var menuTemplate = require("./menuTemplate");
 var scriptManager = require("./scriptManager");
 
