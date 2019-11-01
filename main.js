@@ -55,6 +55,7 @@ function initApp(){
 }
 
 //初始化顶部菜单
+//初始化菜单需要BrowserWindow对象，需要在initApp之后
 function initMenu(){
     var template = menuTemplate.getmenuTemplate(win.webContents,shell);
     const menu = Menu.buildFromTemplate(template);

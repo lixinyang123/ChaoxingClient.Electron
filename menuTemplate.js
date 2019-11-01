@@ -71,12 +71,16 @@ module.exports.getmenuTemplate = (webContents,shell)=>{
                     label: "静音",
                     click: ()=>{
                         main.muted();
+                        //更新脚本后刷新页面，重新载入脚本
+                        webContents.reload();
                     }
                 },
                 {
                     label: "自动答题",
                     click: ()=>{
                         main.autoAnswer();
+                        //更新脚本后刷新页面，重新载入脚本
+                        webContents.reload();
                     }
                 }
             ]
