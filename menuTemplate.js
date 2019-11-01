@@ -1,3 +1,4 @@
+var main = require("./main");
 
 module.exports.getmenuTemplate = (webContents,shell)=>{
         
@@ -64,6 +65,18 @@ module.exports.getmenuTemplate = (webContents,shell)=>{
                     label: "停止刷课",
                     click: ()=>{
                         webContents.reload();
+                    }
+                },
+                {
+                    label: "静音",
+                    click: ()=>{
+                        main.muted();
+                    }
+                },
+                {
+                    label: "自动答题",
+                    click: ()=>{
+                        main.autoAnswer();
                     }
                 }
             ]
