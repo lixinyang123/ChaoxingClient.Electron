@@ -13,6 +13,7 @@ function createWindow() {
         }
     });
 
+    initMenu();
     win.loadURL('http://passport2.chaoxing.com/login');
 
     //win.webContents.openDevTools();
@@ -83,6 +84,5 @@ function autoAnswer(){
 }
 
 initApp();
-initMenu();
 
 module.exports = { muted, autoAnswer }
