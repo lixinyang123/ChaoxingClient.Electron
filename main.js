@@ -24,6 +24,7 @@ function createWindow() {
     });
 
     win.webContents.on('dom-ready',()=>{
+        console.log(script);
         win.webContents.executeJavaScript(script);
     });
 
@@ -85,4 +86,4 @@ function autoAnswer(){
 
 initApp();
 
-module.exports = { muted, autoAnswer }
+module.exports = { muted, autoAnswer, initMenu }

@@ -1,7 +1,7 @@
-var main = require("./main");
 
 module.exports.getmenuTemplate = (webContents,shell)=>{
-        
+
+    var main = require("./main");    
     var menuTemplate = [
         {
             label: "浏览",
@@ -68,7 +68,7 @@ module.exports.getmenuTemplate = (webContents,shell)=>{
                     }
                 },
                 {
-                    label: "静音",
+                    label: "切换静音模式",
                     click: ()=>{
                         main.muted();
                         //更新脚本后刷新页面，重新载入脚本
@@ -76,7 +76,7 @@ module.exports.getmenuTemplate = (webContents,shell)=>{
                     }
                 },
                 {
-                    label: "自动答题",
+                    label: "切换自动答题",
                     click: ()=>{
                         main.autoAnswer();
                         //更新脚本后刷新页面，重新载入脚本
