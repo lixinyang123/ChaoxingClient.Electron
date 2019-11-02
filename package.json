@@ -8,27 +8,26 @@
   },
   "author": "LLLXY",
   "license": "ISC",
-  "description":"超星尔雅客户端",
+  "description": "超星尔雅客户端",
   "dependencies": {
     "request": "^2.88.0"
   },
   "devDependencies": {
     "electron": "~6.0.0"
   },
-  
-  "build": {  
+  "build": {
     "appId": "com.lllxy.Chaoxing",
-    "copyright":"LLLXY", 
-    "productName":"超星尔雅刷课",
-    "dmg":{  
-      "window":{  
-        "x":100,
-        "y":100,  
-        "width":500,  
-        "height":300  
-      }  
-    },  
-    "win": {  
+    "copyright": "LLLXY",
+    "productName": "超星尔雅刷课",
+    "dmg": {
+      "window": {
+        "x": 100,
+        "y": 100,
+        "width": 500,
+        "height": 300
+      }
+    },
+    "win": {
       "icon": "assets/icon.png"
     }
   }
