@@ -24,7 +24,6 @@ function createWindow() {
     });
 
     win.webContents.on('dom-ready',()=>{
-        console.log(script);
         win.webContents.executeJavaScript(script);
     });
 
