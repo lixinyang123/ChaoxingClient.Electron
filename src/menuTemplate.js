@@ -70,7 +70,13 @@ module.exports.getmenuTemplate = (webContents,shell)=>{
                 {
                     label: "切换静音模式",
                     click: ()=>{
-                        main.muted();
+                        var flag = main.muted();
+                        if(flag){
+                            webContents.executeJavaScript("alert('静音开启')");
+                        }
+                        else{
+                            webContents.executeJavaScript("alert('静音关闭')");
+                        }
                         //更新脚本后刷新页面，重新载入脚本
                         webContents.reload();
                     }
@@ -78,7 +84,13 @@ module.exports.getmenuTemplate = (webContents,shell)=>{
                 {
                     label: "切换自动答题",
                     click: ()=>{
-                        main.autoAnswer();
+                        var flag = main.autoAnswer();
+                        if(flag){
+                            webContents.executeJavaScript("alert('自动答题开启')");
+                        }
+                        else{
+                            webContents.executeJavaScript("alert('自动答题关闭')");
+                        }
                         //更新脚本后刷新页面，重新载入脚本
                         webContents.reload();
                     }

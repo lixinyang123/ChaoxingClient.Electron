@@ -67,19 +67,23 @@ function initMenu(){
 function muted(){
     if(script.indexOf("muted: false")>0){
         script = script.replace("muted: false","muted: true");
+        return true;
     }
     else{
         script = script.replace("muted: true","muted: false");
+        return false;
     }
 }
 
 //切换自动答题
 function autoAnswer(){
-    if(script.indexOf("auto_answer: true")){
+    if(script.indexOf("auto_answer: true")>0){
         script = script.replace("auto_answer: true","auto_answer: false");
+        return false;
     }
     else{
         script = script.replace("auto_answer: false","auto_answer: true");
+        return true;
     }
 }
 
