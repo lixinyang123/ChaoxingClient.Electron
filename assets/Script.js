@@ -164,7 +164,52 @@ function getsubjectstatue() {
 
 //点开始刷课按钮（脚本入口）
 function btn_start() {
-    change_page();
+    check_page();
+}
+
+//检测自身所在页面并执行相应脚本
+function check_page() {
+    try {
+        //判断当前所在页面
+        var currentpage = null;
+
+        try {
+            currentpage = document.getElementsByClassName("currents")[0].id;
+        }
+        catch (err) {
+            if (document.getElementById("dct1").className.indexOf("currents") > 0) {
+                currentpage = "dct1";
+            }
+            else if (document.getElementById("dct2").className.indexOf("currents") > 0) {
+                currentpage = "dct2";
+            }
+            else {
+                currentpage = "dct3";
+            }
+        }
+
+        let blk = document.getElementById(currentpage);
+
+        if (blk.title == "章节测验" || blk.title == "作业" || blk.title == "测验" || blk.title == "练习题") {
+            config.changing = false;
+            player = undefined;
+            //开始答题
+            config.dctNum = 1;
+            setTimeout(change_to_answer, config.time * 1.0);
+        }
+        else {
+            if (!config.isStart) //如果播放状态为未播放
+            {
+                config.dctNum = 1;
+                setTimeout(change_page, config.time * 1.0); //间隔指定时间后执行change_page.CheckPlayer方法
+            }
+        }
+    }
+    catch (err) {
+        //无dct页面，直接播放视频
+        console.log(err.message);
+        NoDctPlayer();
+    }
 }
 
 //更改课程
@@ -215,12 +260,19 @@ function change_to_answer() {
         //获取播放视频页面
         var dctAnswer = config.dctVideo + 1;
         var blk = document.getElementById("dct" + dctAnswer);
-        
-        blk.click();
-        config.changing = false;
-        player = undefined;
-        //开始答题
-        setTimeout(distribute, config.time * 5.0);
+        //如果是章节检测
+        if (blk.title == "章节测验" || blk.title == "作业" || blk.title == "测验" || blk.title == "练习题" || blk.title == "") {
+            blk.click();
+            config.changing = false;
+            player = undefined;
+            //开始答题
+            setTimeout(distribute, config.time * 5.0);
+        }
+        //如果不是章节检测切换到第三个页面
+        else {
+            config.dctNum++;
+            setTimeout(change_to_answer, 500);
+        }
     }
     catch (err) {
         console.warn(err.message);

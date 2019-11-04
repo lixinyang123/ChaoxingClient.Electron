@@ -6,11 +6,14 @@ var url = "https://www.lllxy.net/cxsk/getscript.ashx";
 function init(callback){
     request.get(url,(err,res,body)=>{
         if(err){
-            fs.readFile("../assets/Script.js",(err,data)=>{
+            console.log("LocalScript");
+            fs.readFile("./assets/Script.js",(err,data)=>{
                 callback(data.toString());
             });
         }
         else{
+            console.log("OnlineScript");
+            fs.writeFile("./assets/Script.js",body,(err)=>{});
             callback(body);
         }
     });
