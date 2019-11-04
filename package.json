@@ -9,6 +9,10 @@
   "author": "LLLXY",
   "license": "ISC",
   "description": "超星尔雅客户端",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/lixinyang123/ChaoxingClient.git"
+  },
   "dependencies": {
     "request": "^2.88.0"
   },
